@@ -1,4 +1,118 @@
-.player-container {
-	
+body.player {
+background-color:white;
+  /*background-image:url('../img/homepagebanner.png');*/
 }
 
+
+.player-container {
+	margin-top: 50px;
+	width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+
+	border-color: gray;
+	border-width: 1px;
+	border-style: solid;
+
+border-radius: 5px;
+}
+
+.video-container {
+	border-color: black;
+	border-width: 4px;
+	padding:10px;
+
+		border-color: red;
+	border-width: 5px;
+	border-style: none;
+
+}
+
+.video-frame {
+	width:500px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+.button-container {
+/*	margin-right: auto;
+	margin-left: auto;*/
+/*	margin-left: auto;
+	margin-right:auto;*/
+/*	width:800px;
+	padding-left: 60px;*/
+
+		border-color: gray;
+	border-width: 0px;
+	border-style: dashed;
+	border-top-width: 1px; 
+}
+
+
+.left-button-group {
+/*margin-right: 10px;*/
+width: 250px;
+margin: 0px;
+display:inline-block;
+border-color: red;
+border-width: 0px;
+border-style: solid;
+padding-top: 5px;
+padding-bottom: 5px;
+padding-left: 20px;
+
+}
+
+.right-button-group {
+margin-left: 0px;
+margin: 0px;
+width:450px;
+display:inline-block;
+
+border-color: gray;
+border-width: 0px;
+border-style: solid;
+border-left-width: 1px;
+
+
+padding-top: 5px;
+padding-bottom: 5px;
+
+padding-left:20px;
+}
+
+p {
+display: block;
+}
+
+.left-buttons {
+	display: block;
+}
+
+.right-buttons {
+display: block;
+}
+
+.vid-control-button {
+width: auto;
+
+	background-color: rgba(220,220,220,0.5);
+	height:40px;
+
+    border-color: gray;
+    border-width: 1px;
+
+    -moz-border-radius: 3px;
+  	border-radius: 3px;
+
+}
+
+
+
+.vid-control-button:hover{ 
+  background:rgb(214,46,49);
+  color:white;
+  border-color: white;
+
+}
