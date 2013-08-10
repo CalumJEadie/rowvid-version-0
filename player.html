@@ -99,7 +99,7 @@
         player = new YT.Player('player', {
           height: '480',
           width: '853',
-          videoId: 'Tjp9E_8chHw',
+          videoId: extractVideoIdFromURL(),
         });
       }
 
@@ -182,6 +182,13 @@
         }else{
           alert("Could not extract video ID.");
         }
+      }
+
+      function extractVideoIdFromURL() {
+        // expects page URL
+        // player.html#Tjp9E_8chHw
+        videoId = window.location.href.split("#")[1]
+        return videoId
       }
 
     </script>
