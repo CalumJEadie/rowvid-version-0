@@ -1,5 +1,4 @@
-body {
-	background-image:;
+body.home {
 background-color:#cccccc;
 	background-image:url('../img/homepagebanner.png');
 	-webkit-background-size: cover;
@@ -8,6 +7,46 @@ background-color:#cccccc;
   background-size: cover;
 
 }
+
+
+body.player {
+background-color:#cccccc;
+  /*background-image:url('../img/homepagebanner.png');*/
+}
+
+
+.top-img-logo {
+  width:150px;
+  display: inline;
+  margin-top: 5px;
+}
+
+.inline-bit {
+  display:inline;
+}
+
+.nav-text-right {
+  color: white;
+  border-color: white;
+  border-width: 1px;
+  border-style:dashed;
+  padding: 4px;
+  margin-top: 15px;
+  margin-right: 10px;
+
+
+}
+
+
+a.help-link:link {color:white;}      /* unvisited link */
+a.help-link:visited {color:white;}  /* visited link */
+a.help-link:hover {
+  color:rgb(214,46,49);
+  text-decoration: none;
+
+  }  /* mouse over link */
+a.help-link:active {color:rgb(214,46,49);}  /* selected link */
+
 
 
 .img-logo {
