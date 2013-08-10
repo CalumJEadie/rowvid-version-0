@@ -1,6 +1,8 @@
 body.home {
-background-color:#cccccc;
+background-color:black;
+
 	background-image:url('../img/homepagebanner.png');
+  
 	-webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
