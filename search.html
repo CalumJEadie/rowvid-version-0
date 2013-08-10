@@ -72,21 +72,18 @@
   <div class="input-group">
 
   
-    <form action="https://docs.google.com/forms/d/1eKPNwCBmCK1yg9PMDKc812Wa4bo1mHH5WgFbecfFj3A/formResponse" method="post"
-    target="hidden_iframe" onsubmit="submitted=true;">
 
     <div class="form-group">
       
-      <input type="text" name="entry.1850286695" value="" class="ss-q-short form-control email-textbox" placeholder="PUT YOUTUBE LINK HERE">
+      <input type="text" id="video-fuzzy" class="ss-q-short form-control email-textbox" placeholder="PUT YOUTUBE LINK HERE">
     </div>
 
 
        <div class="form-group">
-      <!-- <input type="submit" name="submit" value="Submit" id="ss-submit"> -->
-       <button type="submit" name="submit" value="Submit" id="ss-submit" class="btn btn-default btn-lg thanks-button">WATCH</button>
+       <button type="submit" class="btn btn-default btn-lg thanks-button" onclick="playVideo()">WATCH</button>
     </div>
 
-    </form>
+
 
 </div>
 
@@ -99,5 +96,28 @@
 
     <script src="../assets/js/jquery.js"></script>
     <script src="../bootstrap/js/bootstrap.min.js"></script>
+
+    <script>
+
+      function playVideo() {
+
+        videoFuzzy = document.getElementById("video-fuzzy").value
+        videoId = extractVideoId(videoFuzzy)
+        url = "player.html#" + videoId
+        window.open(url)
+      }
+
+
+      function extractVideoId(url){
+        var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+        var match = url.match(regExp);
+        if (match&&match[7].length==11){
+          return match[7];
+        }else{
+          alert("Could not extract video ID.");
+        }
+      }
+
+      </script>
   </body>
 </html>
