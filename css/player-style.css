@@ -1,4 +1,53 @@
 .player-container {
-	
+	margin-top: 50px;
+/*	margin-left: auto;
+	margin-left: auto;*/
+
+	border-color: red;
+	border-width: 5px;
+
 }
 
+.video-box {
+	border-color: black;
+	border-width: 4px;
+	padding:10px;
+
+}
+
+
+.button-container {
+/*	margin-right: auto;
+	margin-left: auto;*/
+	margin-left: auto;
+	margin-right:auto;
+	width:600px;
+	padding-left: 60px;
+}
+
+
+.left-button-group {
+margin-right: 10px;
+display:inline;
+border-color: red;
+border-width: 2px;
+border-style: solid;
+padding-top: 5px;
+padding-bottom: 5px;
+
+}
+
+.right-button-group {
+margin-left: 0px;
+display:inline;
+border-color: red;
+border-width: 1px;
+border-style: solid;
+padding-top: 5px;
+padding-bottom: 5px;
+}
+
+
+.vid-control-button {
+width: auto;
+}
