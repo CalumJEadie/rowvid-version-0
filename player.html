@@ -51,16 +51,14 @@
 
     <div class="container">
       <div class="player-container">
-          <div class="video-container">
-            <iframe class="video-frame" width="500" height="375" src="//www.youtube.com/embed/twewN6o_lVc" frameborder="0" allowfullscreen></iframe>
-         </div>
+          <div id="player"></div>
 
       <div class="button-container">
         <div class="left-button-group">
           <p>Frame by frame</p>
           <div class="left-buttons">
-           <button type="submit" name="submit" value="Submit" class="vid-control-button">Previous frame</button>
-           <button type="submit" name="submit" value="Submit" class="vid-control-button">Next frame</button>
+           <button class="vid-control-button" onclick="prevFrame()">Previous frame</button>
+           <button class="vid-control-button" onclick="nextFrame()">Next frame</button>
          </div>
        </div>
 
@@ -68,9 +66,9 @@
         <p>Change speed</p>
 
         <div class="right-buttons">
-         <button type="submit" name="submit" value="Submit" class="vid-control-button">Normal speed</button>
-         <button type="submit" name="submit" value="Submit" class="vid-control-button">Half speed</button>
-         <button type="submit" name="submit" value="Submit" class="vid-control-button">Quarter speed</button>
+         <button class="vid-control-button" onclick="setPlaybackRateAndPlay(1)">Normal speed</button>
+         <button class="vid-control-button" onclick="setPlaybackRateAndPlay(0.5)">Half speed</button>
+         <button class="vid-control-button" onclick="setPlaybackRateAndPlay(0.25)">Quarter speed</button>
        </div>
        </div>
 
@@ -83,5 +81,109 @@
 
     <script src="../assets/js/jquery.js"></script>
     <script src="../bootstrap/js/bootstrap.min.js"></script>
+
+
+
+    <script>
+      // 2. This code loads the IFrame Player API code asynchronously.
+      var tag = document.createElement('script');
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      // 3. This function creates an <iframe> (and YouTube player)
+      //    after the API code downloads.
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          height: '480',
+          width: '853',
+          videoId: 'Tjp9E_8chHw',
+        });
+      }
+
+
+      function isSpeedChangeSupported() {
+        // Flash player [1]
+        // HTML5 player [0.25,0.5,1,1.5,2 ]
+        // playbackRates == [1] if using Flash player
+        // https://developers.google.com/youtube/js_api_reference#getAvailablePlaybackRates
+        playbackRates = player.getAvailablePlaybackRates()
+        console.log("available playback rates: " + player.getAvailablePlaybackRates())
+        return playbackRates[0] != 1
+      }
+
+      function alertNeedHTML5Player() {
+        alert("Your browser doesn't currently support changing video speeds, pop over to http://www.youtube.com/html5, start the HTML5 trail and then you're sorted!")
+        window.open("http://www.youtube.com/html5")
+      }
+
+      function setPlaybackRateAndPlay(speed) {
+        if( isSpeedChangeSupported() ) {
+          setPlaybackRate(speed)
+          player.playVideo()
+        }else{
+          alertNeedHTML5Player()
+        }
+      }
+
+      function setPlaybackRate(speed) {
+        player.setPlaybackRate(speed)
+        
+      }
+
+      function nextFrame() {
+        player.pauseVideo()
+        currentTime = player.getCurrentTime()
+        framesPerSecond = 25 // worked out by quick profiling of videos using stats for nerd feature of player
+        numFramesToAdvance = 1
+        timeToAdvance = (1/framesPerSecond) * numFramesToAdvance
+        newTime = currentTime + timeToAdvance
+        player.seekTo(newTime)
+      }
+
+      function prevFrame() {
+        player.pauseVideo()
+        currentTime = player.getCurrentTime()
+        framesPerSecond = 25 // worked out by quick profiling of videos using stats for nerd feature of player
+        numFramesToAdvance = 1
+        timeToAdvance = (1/framesPerSecond) * numFramesToAdvance
+        newTime = currentTime - timeToAdvance
+        player.seekTo(newTime)
+      }
+
+      function loadVideoByUrlAndPlay() {
+        // need url like http://www.youtube.com/v/VIDEO_ID?version=3
+        // NOT LIKE http://www.youtube.com/watch?v=97-NclfkuM0
+        videoURL = document.getElementById("video-url").value
+        player.loadVideoByUrl(videoURL)
+        player.playVideo()
+      }
+
+      function loadVideoByIdAndPlay() {
+        videoID = document.getElementById("video-id").value
+        player.loadVideoById(videoID)
+        player.playVideo()
+      }
+
+      function loadVideoByFuzzyAndPlay() {
+        videoFuzzy = document.getElementById("video-fuzzy").value
+        videoId = extractVideoId(videoFuzzy)
+        player.loadVideoById(videoId)
+        player.playVideo() 
+      }
+
+      function extractVideoId(url){
+        var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+        var match = url.match(regExp);
+        if (match&&match[7].length==11){
+          return match[7];
+        }else{
+          alert("Could not extract video ID.");
+        }
+      }
+
+    </script>
   </body>
 </html>

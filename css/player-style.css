@@ -6,7 +6,9 @@ background-color:white;
 
 .player-container {
 	margin-top: 50px;
-	width: 800px;
+	width: 875px;
+    text-align: center;
+    padding: 10px;
 	margin-left: auto;
 	margin-right: auto;
 
@@ -19,17 +21,17 @@ border-radius: 5px;
 
 .video-container {
 	border-color: black;
-	border-width: 4px;
+	/*border-width: 4px;*/
 	padding:10px;
 
 		border-color: red;
-	border-width: 5px;
+	/*border-width: 5px;*/
 	border-style: none;
 
 }
 
 .video-frame {
-	width:500px;
+	/*width:500px;*/
 	margin-left: auto;
 	margin-right: auto;
 }
