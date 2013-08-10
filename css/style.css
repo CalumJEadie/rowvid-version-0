@@ -16,13 +16,39 @@ background-color:black;
 
 .top-img-logo {
   width:150px;
-  display: inline;
+  float:left;
   margin-top: 5px;
+
+/*    border-width: 5px;
+  border-style: solid;
+border-color: white;*/
 }
 
 .inline-bit {
   display:inline;
 }
+
+.nav-bar-custom {
+  /*color: green;*/
+/*  border-width: 5px;
+  border-style: solid;
+border-color: green;*/
+
+float:left;
+width: auto;
+margin-left: 20px;
+margin-top:8px;
+
+}
+
+.nav-ul-custom {
+  display: inline;
+/*    border-width: 5px;
+  border-style: solid;
+border-color: red;*/
+
+}
+
 
 .nav-text-right {
   color: white;
@@ -31,7 +57,9 @@ background-color:black;
   border-style:dashed;
   padding: 4px;
   margin-top: 15px;
-  margin-right: 10px;
+  margin-right: 0px;
+
+  float:right;
 
 
 }
@@ -69,7 +97,7 @@ h2 {
 
 .jumbotron {
 	background-color:rgba(0,0,0,0.6);
-	margin-top: 30px;
+	margin-top: 90px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
 
