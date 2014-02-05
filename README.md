@@ -3,14 +3,21 @@ RowVid
 
 [calumjeadie.com/rowvid/](http://calumjeadie.com/rowvid/)
 
-Provides frame by frame and slow motion playback of YouTube videos
+Provides frame by frame and slow motion playback of YouTube videos.
+
+Motivation
+----------
+
+RowVid was originally created by [Calum Eadie](https://twitter.com/CalumJEadie), [Andrew Ratomski](https://twitter.com/AHTomski) and [Jack Lawrence Jones](https://twitter.com/busterlj) at an Entrepreneur First Hackathon, to help rowers analyse training and race videos.
+
+Since then it has evolved into general purpose player for frame by frame and slow motion playback of any YouTube video.
 
 Screenshots
 -----------
 
-### RowVid v1.0 - Created in two days at an Entrepreneur First Hackathon, August 2013
+### Hackathon
 
-!["Home"](screenshots/hackathon/home-1.png)
+!["Home"](screenshots/hackathon/home.png)
 
 !["Boom"](screenshots/hackathon/boom.png)
 
