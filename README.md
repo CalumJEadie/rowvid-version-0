@@ -1,7 +1,9 @@
 RowVid
 ======
 
-[calumjeadie.com/rowvid/](http://calumjeadie.com/rowvid/) • Watch YouTube frame by frame and in slow motion
+[calumjeadie.com/rowvid/](http://calumjeadie.com/rowvid/)
+
+Watch YouTube frame by frame and in slow motion.
 
 Motivation
 ----------
