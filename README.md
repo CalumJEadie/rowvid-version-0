@@ -33,3 +33,5 @@ https://developers.google.com/youtube/js_api_reference
 https://developers.google.com/youtube/youtube_player_demo
 
 https://code.google.com/apis/ajax/playground/#change_the_playing_video
+
+https://developers.google.com/youtube/iframe_api_reference

@@ -69,33 +69,41 @@ mixpanel.init("bb9ebc8127869296f78ba8063826fb76");</script><!-- end Mixpanel -->
 
 
 
-    <div class="container">
-      <div class="player-container">
-          <div id="player"></div>
+<div class="container">
+  <div class="player-container">
+    <div id="player"></div>
 
-      <div class="button-container">
-        <div class="left-button-group">
-          <p>Frame by frame</p>
-          <div class="left-buttons">
-           <button class="vid-control-button" onclick="prevFrame()">Previous frame</button>
-           <button class="vid-control-button" onclick="nextFrame()">Next frame</button>
-         </div>
-       </div>
+    <div class="button-container">
+      <div class="timer-group">
+        <p>Timing</p>
+        <input type="text" readonly="readonly" id="timer" size="8" />
+        ±
+        <input type="text" readonly="readonly" id="uncertainty" size="4" />
+        s
+      </div>
 
-       <div class="right-button-group">
+      <div class="left-button-group">
+        <p>Frame by frame</p>
+        <div class="left-buttons">
+          <button class="vid-control-button" onclick="prevFrame()">Previous frame</button>
+          <button class="vid-control-button" onclick="nextFrame()">Next frame</button>
+        </div>
+      </div>
+
+      <div class="right-button-group">
         <p>Change speed</p>
 
         <div class="right-buttons">
-         <button class="vid-control-button" onclick="setPlaybackRateAndPlay(1)">Normal speed</button>
-         <button class="vid-control-button" onclick="setPlaybackRateAndPlay(0.5)">Half speed</button>
-         <button class="vid-control-button" onclick="setPlaybackRateAndPlay(0.25)">Quarter speed</button>
-       </div>
-       </div>
-
-     </div>
+          <button class="vid-control-button" onclick="setPlaybackRateAndPlay(1)">Normal speed</button>
+          <button class="vid-control-button" onclick="setPlaybackRateAndPlay(0.5)">Half speed</button>
+          <button class="vid-control-button" onclick="setPlaybackRateAndPlay(0.25)">Quarter speed</button>
+        </div>
+      </div>
 
     </div>
+
   </div>
+</div>
 
       
 
@@ -122,7 +130,16 @@ mixpanel.init("bb9ebc8127869296f78ba8063826fb76");</script><!-- end Mixpanel -->
           videoId: extractVideoIdFromURL(),
         });
         mixpanel.track("Loaded video", {"videoId": extractVideoIdFromURL()});
+
+        // Start polling to update timer
+        setInterval(updateTimer, 10);
+
       }
+
+      framesPerSecond = 25 // worked out by quick profiling of videos using stats for nerd feature of player
+      numFramesToAdvance = 1
+      timeToAdvance = (1/framesPerSecond) * numFramesToAdvance
+      document.getElementById("uncertainty").value = preciseRound(timeToAdvance, 2)
 
 
       function isSpeedChangeSupported() {
@@ -163,6 +180,7 @@ mixpanel.init("bb9ebc8127869296f78ba8063826fb76");</script><!-- end Mixpanel -->
         timeToAdvance = (1/framesPerSecond) * numFramesToAdvance
         newTime = currentTime + timeToAdvance
         player.seekTo(newTime)
+        updateTimer()
         mixpanel.track("Next frame", {"videoId": extractVideoIdFromURL()});
       }
 
@@ -174,6 +192,7 @@ mixpanel.init("bb9ebc8127869296f78ba8063826fb76");</script><!-- end Mixpanel -->
         timeToAdvance = (1/framesPerSecond) * numFramesToAdvance
         newTime = currentTime - timeToAdvance
         player.seekTo(newTime)
+        updateTimer()
         mixpanel.track("Prev frame", {"videoId": extractVideoIdFromURL()});
       }
 
@@ -182,20 +201,23 @@ mixpanel.init("bb9ebc8127869296f78ba8063826fb76");</script><!-- end Mixpanel -->
         // NOT LIKE http://www.youtube.com/watch?v=97-NclfkuM0
         videoURL = document.getElementById("video-url").value
         player.loadVideoByUrl(videoURL)
-        player.playVideo()
+        player.playVideo()        
+        updateTimer()
       }
 
       function loadVideoByIdAndPlay() {
         videoID = document.getElementById("video-id").value
         player.loadVideoById(videoID)
         player.playVideo()
+        updateTimer()
       }
 
       function loadVideoByFuzzyAndPlay() {
         videoFuzzy = document.getElementById("video-fuzzy").value
         videoId = extractVideoId(videoFuzzy)
         player.loadVideoById(videoId)
-        player.playVideo() 
+        player.playVideo()
+        updateTimer() 
       }
 
       function extractVideoId(url){
@@ -213,6 +235,14 @@ mixpanel.init("bb9ebc8127869296f78ba8063826fb76");</script><!-- end Mixpanel -->
         // player.html#Tjp9E_8chHw
         videoId = window.location.href.split("#")[1]
         return videoId
+      }
+
+      function updateTimer() {
+        document.getElementById("timer").value = preciseRound(player.getCurrentTime(), 2)
+      }
+
+      function preciseRound(num, decimals) {
+          return Math.round(num * Math.pow(10, decimals)) / Math.pow(10, decimals);
       }
 
     </script>

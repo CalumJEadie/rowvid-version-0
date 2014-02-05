@@ -51,6 +51,20 @@ border-radius: 5px;
 	border-top-width: 1px; 
 }
 
+.timer-group {
+/*margin-right: 10px;*/
+/*width: 150px;*/
+margin: 0px;
+display:inline-block;
+border-color: red;
+border-width: 0px;
+border-style: solid;
+padding-top: 5px;
+padding-bottom: 5px;
+padding-right: 20px;
+
+}
+
 
 .left-button-group {
 /*margin-right: 10px;*/
@@ -64,12 +78,17 @@ padding-top: 5px;
 padding-bottom: 5px;
 padding-left: 20px;
 
+border-color: gray;
+border-width: 0px;
+border-style: solid;
+border-left-width: 1px;
+
 }
 
 .right-button-group {
 margin-left: 0px;
 margin: 0px;
-width:450px;
+width:350px;
 display:inline-block;
 
 border-color: gray;
