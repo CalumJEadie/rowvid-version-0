@@ -1,9 +1,22 @@
 RowVid
 ======
 
-http://calumjeadie.com/rowvid/
+[calumjeadie.com/rowvid/](http://calumjeadie.com/rowvid/)
 
-Entrepreneur First Hackathon 09/08/2013
+Provides frame by frame and slow motion playback of YouTube videos
+
+Screenshots
+-----------
+
+### RowVid v1.0 - Created in two days at an Entrepreneur First Hackathon, August 2013
+
+!["Home"](screenshots/hackathon/home-1.png)
+
+!["Boom"](screenshots/hackathon/boom.png)
+
+!["Search"](screenshots/hackathon/search.png)
+
+!["Player"](screenshots/hackathon/player.png)
 
 References
 ----------
