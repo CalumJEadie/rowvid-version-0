@@ -1,9 +1,7 @@
 RowVid
 ======
 
-[calumjeadie.com/rowvid/](http://calumjeadie.com/rowvid/)
-
-Provides frame by frame and slow motion playback of YouTube videos.
+[calumjeadie.com/rowvid/](http://calumjeadie.com/rowvid/) • Watch YouTube frame by frame and in slow motion
 
 Motivation
 ----------
