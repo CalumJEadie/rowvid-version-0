@@ -138,7 +138,8 @@ mixpanel.init("bb9ebc8127869296f78ba8063826fb76");</script><!-- end Mixpanel -->
           videoId: extractVideoIdFromURL(),
         });
         mixpanel.track("Loaded video", {
-          "videoId": extractVideoIdFromURL()
+            "videoId": extractVideoIdFromURL(),
+            "videoURL": "https://www.youtube.com/watch?v=" + extractVideoIdFromURL()
         });
 
         // Start polling to update timer
